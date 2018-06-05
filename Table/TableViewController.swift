@@ -12,6 +12,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     var random: Int = 0
     
+    var number: Int = 0
+    
     var numArray: [Int] = []
     
     @IBOutlet var TableView: UITableView!
@@ -22,9 +24,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         while random < 20 {
             
-            let number = Int(arc4random_uniform(100))
+            var number = Int(arc4random_uniform(100))
             
             numArray.append(number)
+            
+            random += 1
+            
             
         }
         
@@ -60,7 +65,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
-        
         
         cell.label!.text = String(numArray[indexPath.row])
         
